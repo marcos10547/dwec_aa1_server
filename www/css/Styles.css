@@ -1,0 +1,436 @@
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f9fb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Header (Compartido) */
+.header {
+    background-color: #2563eb; /* blue-600 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+.header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Main Content (Contenedor principal, compartido) */
+.main-content {
+    flex-grow: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Main Layout para index.html (Responsive grid/flex) */
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* gap-6 */
+    height: 100%;
+    width: 100%;
+}
+
+/* Panels (Category & Site - index.html) */
+.panel {
+    background-color: white;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.panel-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.panel-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* Botones Generales */
+.btn {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.btn-add {
+    background-color: #10b981; /* green-500 */
+    color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.btn-add:hover { background-color: #059669; }
+.btn-delete {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    padding: 0.75rem 1.5rem; /* Para botón grande en index */
+}
+.btn-delete:hover { background-color: #dc2626; }
+.btn-action {
+    background-color: #4f46e5; /* indigo-500 */
+    color: white;
+}
+.btn-action:hover { background-color: #4338ca; }
+.btn-secondary {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #4b5563; /* gray-600 */
+    font-weight: normal;
+}
+.btn-secondary:hover { background-color: #d1d5db; }
+
+/* Category List (index.html) */
+.category-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    border-top: 1px solid #f3f4f6;
+}
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: #374151;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #f3f4f6;
+    text-decoration: none;
+}
+.category-item:hover { background-color: #eff6ff; }
+.category-item.active {
+    background-color: #3b82f6;
+    color: white;
+}
+.category-item.active .count-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+.count-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: #e0f2fe;
+    color: #1e40af;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+}
+.category-item:not(.active) .count-badge {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+/* Site List (index.html) */
+.site-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.site-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.site-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+.site-card p { margin: 0; }
+.site-card .site-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+}
+.site-card .site-info {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+.site-card .site-info span {
+    font-family: monospace;
+}
+.site-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+.action-icon {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.2s, color 0.2s;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.action-icon svg { width: 1.25rem; height: 1.25rem; }
+.action-icon.edit-icon {
+    color: #3b82f6;
+}
+.action-icon.edit-icon:hover {
+    color: #1d4ed8;
+    background-color: #eff6ff;
+}
+.action-icon.delete-icon {
+    color: #ef4444;
+}
+.action-icon.delete-icon:hover {
+    color: #b91c1c;
+    background-color: #fee2e2;
+}
+
+/* Modal Styles (index.html - Category Modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 50;
+}
+.modal-overlay.show {
+    display: flex;
+}
+.modal-content {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 24rem;
+    padding: 1.5rem;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.modal-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+.modal-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+.modal-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.modal-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+.modal-save-btn {
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: #2563eb;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    border: none;
+}
+.modal-save-btn:hover { background-color: #1d4ed8; }
+
+/* Form Card (site_form.html) */
+.form-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    padding: 1.5rem;
+    max-width: 900px;
+}
+.form-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.75rem;
+}
+
+/* Form Styles (site_form.html) */
+.form-field {
+    margin-bottom: 1.5rem;
+}
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+.form-input-group {
+    position: relative;
+}
+.form-input, .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
+}
+.form-input:focus, .form-select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+.form-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Password Toggle (site_form.html) */
+.toggle-password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.2s;
+    border: none;
+    background: transparent;
+}
+.toggle-password:hover {
+    color: #374151;
+}
+.toggle-password svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Action Buttons (Formulario) */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.btn-cancel {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 0.75rem 1.5rem;
+}
+.btn-cancel:hover { background-color: #d1d5db; }
+.btn-save {
+    background-color: #4f46e5;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.2);
+    padding: 0.75rem 1.5rem;
+}
+.btn-save:hover { background-color: #4338ca; }
+
+/* Custom Alert Modal (Compartido) */
+.custom-alert {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.custom-alert-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    max-width: 24rem;
+    width: 100%;
+}
+.custom-alert-content h4 {
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+}
+.custom-alert-content button {
+    margin-top: 1rem;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* Media Query for Desktop Layout (Index.html y ajustes generales) */
+@media (min-width: 1024px) {
+
+    /* Index.html layout */
+    .main-layout {
+        flex-direction: row;
+    }
+    #category-panel {
+        width: 25%;
+        max-width: none;
+    }
+    #site-panel {
+        width: 75%;
+        max-width: none;
+    }
+
+    /* site_form.html layout adjustment to ensure form card is centered */
+    .main-content {
+        align-items: center;
+    }
+}

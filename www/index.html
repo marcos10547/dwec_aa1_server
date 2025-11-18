@@ -1,29 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Contraseñas - Principal</title>
+    <!-- Enlace al archivo CSS externo -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/Styles.css">
 </head>
-<body>
-  <main>
-    <ul></ul>
-  </main>
-  <script>
-    let drawData = (data) => {
-      data.forEach(category => {
-        let parent = document.getElementsByTagName('ul')[0]
-        let child = document.createElement('li')
-        // child.innerText = JSON.stringify(category)
-        child.innerText = category.name
-        parent.appendChild(child)
-      })
-    }
+<body class="min-h-screen flex flex-col">
 
-    fetch("http://localhost:3000/categories")
-      .then(res => res.json())
-      .then(data => drawData(data))
-  </script>
+    <!-- Encabezado de la Aplicación -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Gestor de Contraseñas</h1>
+            <!-- Aquí irían elementos de navegación o usuario si existieran -->
+        </div>
+    </header>
+
+    <!-- Contenido Principal: Responsive Layout -->
+    <main class="main-content">
+        <div class="main-layout">
+
+            <!-- Panel de Categorías (Izquierda en Desktop, Superior en Mobile) -->
+            <section id="category-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Categorías</h2>
+                    <button id="add-category-btn" class="btn btn-add">
+                        + Añadir
+                    </button>
+                </div>
+                
+                <div id="category-list" class="category-list">
+                    <!-- Las categorías se cargarán dinámicamente aquí por JS -->
+                </div>
+
+                <!-- Footer del Panel con el botón de Eliminar Categoría -->
+                <div class="panel-footer">
+                    <button id="delete-category-btn" class="btn btn-delete w-full">
+                        Eliminar Categoría Seleccionada
+                    </button>
+                </div>
+            </section>
+
+            <!-- Panel de Sitios (Derecha en Desktop, Inferior en Mobile) -->
+            <section id="site-panel" class="panel">
+                <div class="panel-header">
+                    <h2 id="site-list-title">Sitios (Selecciona una Categoría)</h2>
+                    <a href="site_form.html" class="btn btn-action">
+                        + Añadir Entrada
+                    </a>
+                </div>
+
+                <div id="site-list" class="site-list">
+                    <!-- Los sitios (sites) se cargarán dinámicamente aquí por JS -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal para Añadir Categoría (Inicialmente Oculto - Figura 2) -->
+    <div id="category-modal" class="modal-overlay">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3>Añadir Nueva Categoría</h3>
+            
+            <label for="category-name-input" class="modal-label">
+                Introduce el nombre de la nueva categoría:
+            </label>
+            <input type="text" id="category-name-input" placeholder="Ej: Streaming" class="modal-input">
+            
+            <div class="modal-actions">
+                <button id="cancel-category-btn" class="btn btn-secondary">
+                    Cancelar
+                </button>
+                <button id="save-category-btn" class="modal-save-btn">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
