@@ -25,7 +25,7 @@ class Api {
         const url = `${API_BASE_URL}/categories`;
         
         const options = {
-            methods: 'POST',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -35,7 +35,7 @@ class Api {
         try {
                 const response = await fetch(url, options)
 
-                if (!options.ok) {
+                if (!response.ok) {
                     const errorBody = await response.text(); 
                     throw new Error(`Errooooor ${response.status}: ${errorBody || response.statusText}`)
                 }
@@ -47,6 +47,84 @@ class Api {
             throw error;
         }
     }
-    // addCategory, deleteCategory, findCategoryAndSites
+
+    async delCategory(CategoryId){
+        const url = `${API_BASE_URL}/categories/${CategoryId}`
+         const options = {
+            method: 'DELETE'
+         };
+        
+        try {
+            const response = await fetch(url, options)
+
+            if (!response.ok) {
+                const errorBody = await response.text(); 
+                throw new Error(`Errooooor ${response.status}: ${errorBody || response.statusText}`)
+            }
+
+            return { success: true, status: response.status };
+        
+        } catch (error) {
+            console.error("Error al eliminar una categoría:", error);
+            throw error;
+        }
+    }
+
+
+    async delSite(SiteId){
+        const url = `${API_BASE_URL}/sites/${SiteId}`
+        const options = {
+            method: 'DELETE'
+        };
+
+        try {
+
+            const response = await fetch(url, options)
+
+            if (!response.ok) {
+                const errorBody = await response.text(); 
+                throw new Error(`Errooooor ${response.status}: ${errorBody || response.statusText}`)
+            }
+
+            return { success: true, status: response.status };
+            
+        } catch (error) {
+            console.error("Error al eliminar un site:", error);
+            throw error;
+        }
+    }
+    
+
+    async addCategory(siteData, CategoryId) {
+        const url = `${API_BASE_URL}/categories/${CategoryId}`;
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(siteData)
+        };
+
+        try {
+            const response = await fetch(url, options)
+
+            if (!response.ok) {
+                const errorBody = await response.text(); 
+                throw new Error(`Errooooor ${response.status}: ${errorBody || response.statusText}`)
+            }
+
+            return await response.json()
+
+        } catch (error) {
+            console.error("Error al añadir un site:", error);
+            throw error;
+        }
+    }
+
+//   app.get('/categories/:id', listCategorySites)
+//   app.get('/categories',listCategories)
+//   app.get('/sites',listSites)
+
 
 }
