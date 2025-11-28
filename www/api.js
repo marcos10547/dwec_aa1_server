@@ -165,9 +165,4 @@ class Api {
         }
     }
 
-    async pepe(params) {
-        
-    }
-    
-
 }
