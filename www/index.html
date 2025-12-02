@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Contraseñas - Principal</title>
-    <!-- Enlace al archivo CSS externo -->
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Styles.css">
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Encabezado de la Aplicación -->
     <header class="header">
         <div class="header-content">
             <h1>Gestor de Contraseñas</h1>
-            <!-- Aquí irían elementos de navegación o usuario si existieran -->
         </div>
     </header>
 
-    <!-- Contenido Principal: Responsive Layout -->
     <main class="main-content">
         <div class="main-layout">
 
-            <!-- Panel de Categorías (Izquierda en Desktop, Superior en Mobile) -->
             <section id="category-panel" class="panel">
                 <div class="panel-header">
                     <h2>Categorías</h2>
@@ -33,10 +30,8 @@
                 </div>
                 
                 <div id="category-list" class="category-list">
-                    <!-- Las categorías se cargarán dinámicamente aquí por JS -->
-                </div>
+                    </div>
 
-                <!-- Footer del Panel con el botón de Eliminar Categoría -->
                 <div class="panel-footer">
                     <button id="delete-category-btn" class="btn btn-delete w-full">
                         Eliminar Categoría Seleccionada
@@ -44,24 +39,22 @@
                 </div>
             </section>
 
-            <!-- Panel de Sitios (Derecha en Desktop, Inferior en Mobile) -->
             <section id="site-panel" class="panel">
                 <div class="panel-header">
                     <h2 id="site-list-title">Sitios (Selecciona una Categoría)</h2>
-                    <a href="site_form.html" class="btn btn-action">
+                    
+                    <a href="#" id="add-site-btn" class="btn btn-action" style="display: none;">
                         + Añadir Entrada
                     </a>
                 </div>
 
                 <div id="site-list" class="site-list">
-                    <!-- Los sitios (sites) se cargarán dinámicamente aquí por JS -->
-                </div>
+                    </div>
             </section>
 
         </div>
     </main>
 
-    <!-- Modal para Añadir Categoría (Inicialmente Oculto - Figura 2) -->
     <div id="category-modal" class="modal-overlay">
         <div class="modal-content" onclick="event.stopPropagation()">
             <h3>Añadir Nueva Categoría</h3>
@@ -81,7 +74,7 @@
             </div>
         </div>
     </div>
+
+    <script src="app.js" type="module"></script>
 </body>
-<script src='app.js' type="module"></script>
-<script src='form.js' type="module"></script>
 </html>

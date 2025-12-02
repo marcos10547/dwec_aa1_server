@@ -4,95 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Contraseñas - Añadir/Editar</title>
-    <!-- Enlace al archivo CSS externo -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Styles.css">
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Encabezado de la Aplicación -->
     <header class="header">
         <div class="header-content">
             <h1>Gestor de Contraseñas</h1>
         </div>
     </header>
 
-    <!-- Contenido Principal: Formulario de Entrada (Figura 3) -->
     <main class="main-content">
-        
         <div class="form-card">
-            <h2>Añadir/Editar Entrada</h2>
+            <h2>Añadir Nueva Entrada</h2>
 
             <form id="site-form">
                 
-                <!-- Campo Nombre -->
                 <div class="form-field">
-                    <label for="site-name" class="form-label">
-                        Nombre del Sitio (Obligatorio)
-                    </label>
-                    <input type="text" id="site-name" required placeholder="Ej: Netflix" 
-                           class="form-input">
+                    <label for="site-name" class="form-label">Nombre del Sitio (Obligatorio)</label>
+                    <input type="text" id="site-name" required placeholder="Ej: Netflix" class="form-input">
                 </div>
 
-                <!-- Campo URL (Opcional, pero útil) -->
                 <div class="form-field">
-                    <label for="site-url" class="form-label">
-                        URL (Opcional)
-                    </label>
-                    <input type="url" id="site-url" placeholder="Ej: https://www.netflix.com" 
-                           class="form-input">
+                    <label for="site-url" class="form-label">URL (Opcional)</label>
+                    <input type="url" id="site-url" placeholder="Ej: https://www.netflix.com" class="form-input">
                 </div>
 
-                <!-- Campo Usuario -->
                 <div class="form-field">
-                    <label for="site-user" class="form-label">
-                        Usuario (Obligatorio)
-                    </label>
-                    <input type="text" id="site-user" required placeholder="Ej: mi_correo@dominio.com" 
-                           class="form-input">
+                    <label for="site-user" class="form-label">Usuario (Obligatorio)</label>
+                    <input type="text" id="site-user" required placeholder="Ej: mi_correo@dominio.com" class="form-input">
                 </div>
 
-                <!-- Campo Contraseña -->
                 <div class="form-field">
-                    <label for="site-password" class="form-label">
-                        Contraseña (Obligatorio)
-                    </label>
-                    <div class="form-input-group">
-                        <input type="password" id="site-password" required placeholder="Contraseña segura" 
-                               class="form-input">
-                        <!-- Botón para mostrar/ocultar contraseña (funcionalidad JS) -->
-                        <button type="button" id="toggle-password" class="toggle-password">
-                             <!-- Icono de ojo -->
+                    <label for="site-password" class="form-label">Contraseña (Obligatorio)</label>
+                    <div class="form-input-group" style="display: flex;">
+                        <input type="password" id="site-password" required placeholder="Contraseña segura" class="form-input" style="border-radius: 3px 0 0 3px;">
+                        
+                        <button type="button" id="generate-password" class="btn-generate" title="Generar contraseña segura">
+                            Generar
+                        </button>
+
+                        <button type="button" id="toggle-password" class="toggle-password" style="position: static; border: 1px solid #bdbdbd; border-left: none; border-radius: 0 3px 3px 0;">
                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>
                         </button>
                     </div>
                 </div>
 
-                <!-- Campo Categoría (Select) -->
-                <div class="form-field">
-                    <label for="site-category" class="form-label">
-                        Categoría (Selecciona una)
-                    </label>
-                    <select id="site-category" required 
-                            class="form-select">
-                        <!-- La lista de categorías se cargará dinámicamente aquí por JS -->
-                        <option value="" disabled selected>-- Seleccione una categoría --</option>
-                    </select>
-                </div>
-
-                <!-- Botones de Acción -->
                 <div class="form-actions">
-                    <a href="index.html" class="btn btn-cancel">
-                        Cancelar
-                    </a>
-                    <button type="submit" id="save-site-btn" class="btn btn-save">
-                        Guardar Entrada
-                    </button>
+                    <a href="index.html" class="btn btn-cancel">Cancelar</a>
+                    <button type="submit" id="save-site-btn" class="btn btn-save">Guardar Entrada</button>
                 </div>
             </form>
         </div>
-
     </main>
 </body>
-<script src='form.js'></script>
+
+<script src='form.js' type="module"></script>
 </html>
