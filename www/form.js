@@ -34,6 +34,22 @@ function setupFormSubmit() {
             return Swal.fire('Faltan datos', 'Por favor completa los campos obligatorios.', 'warning');
         }
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(siteData.user)) {
+            return Swal.fire('Email inválido', 'El campo Usuario debe ser un correo electrónico válido (ej: usuario@dominio.com).', 'warning');
+        }
+
+
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W]{8,}$/;
+        
+        if (!passwordRegex.test(siteData.password)) {
+            return Swal.fire(
+                'Contraseña débil', 
+                'La contraseña debe tener al menos 8 caracteres e incluir letras y números.', 
+                'warning'
+            );
+        }
+
         try {
             await api.addNewSite(siteData, categoryId);
 
@@ -103,7 +119,16 @@ function setupDynamicValidation() {
             if (!input.value.trim()) {
                 input.classList.add('input-error');
             } else {
-                input.classList.remove('input-error');
+                if (input.id === 'site-user') {
+                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                     if (!emailRegex.test(input.value.trim())) {
+                         input.classList.add('input-error');
+                     } else {
+                         input.classList.remove('input-error');
+                     }
+                } else {
+                    input.classList.remove('input-error');
+                }
             }
         });
 
