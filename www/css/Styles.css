@@ -29,6 +29,30 @@ body {
   margin: 0;
 }
 
+/* Styles.css - Añadir al final */
+
+.search-input {
+  padding: 0.5rem 1rem;
+  border-radius: 20px; /* Redondeado */
+  border: 1px solid #424242;
+  background-color: #2d2d2d;
+  color: white;
+  font-size: 0.9rem;
+  width: 250px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #bdbdbd;
+}
+
+.search-input:focus {
+  background-color: #424242;
+  border-color: #757575;
+  width: 280px; /* Efecto de expansión al hacer clic */
+}
+
 .main-content {
   flex-grow: 1;
   max-width: 1400px;

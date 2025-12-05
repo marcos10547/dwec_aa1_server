@@ -213,5 +213,27 @@ function setupCategoryListeners() {
     });
 }
 
+function setupSearch() {
+    const searchInput = document.getElementById('search-input');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        const categories = document.querySelectorAll('.category-item');
+        categories.forEach(cat => {
+            const text = cat.textContent.toLowerCase();
+            cat.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+        });
+
+        const sites = document.querySelectorAll('.site-card');
+        sites.forEach(site => {
+            const text = site.textContent.toLowerCase();
+            site.style.display = text.includes(searchTerm) ? 'flex' : 'none';
+        });
+    });
+}
+
 setupCategoryListeners();
+setupSearch(); 
 loadCategories();
+
